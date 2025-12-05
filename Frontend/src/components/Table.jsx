@@ -1,15 +1,16 @@
 import React from 'react'
+import 
 
 const Table = () => {
   return (
     <>
     <div className='Table'>
         <h1>Students Table</h1>
-        <table>
+        <table className='line'>
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>age</th>
+                    <th>Age</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -25,7 +26,7 @@ const Table = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td>arvind</td>
+                    <td>Arvind</td>
                     <td>25</td>
                     <td><div>
                             <button>Edit</button>
@@ -34,7 +35,7 @@ const Table = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td>shahsank</td>
+                    <td>Shashank</td>
                     <td>23</td>
                     <td><div>
                             <button>Edit</button>
@@ -43,7 +44,7 @@ const Table = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td>darshan</td>
+                    <td>Darshan</td>
                     <td>25</td>
                     <td><div>
                             <button>Edit</button>
