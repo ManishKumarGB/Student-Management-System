@@ -1,10 +1,14 @@
-const express = require("express") // express libaries are in the node modules if we need it we shld write this line
-const app=express();// we are calling the expresss function into the app so tht all the nodule modules will come to the app so the we can use it 
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const ConnectDB = require("./connection/db");
+app.use(express.json());
+app.use(cors());
 
-const PORT =3000;  // we need to port to run on tht port
+const PORT = 3000;
 
-app.listen(PORT,()=>{  // we use thjs app.listen to run the application in particular port it has two parameter frist is port and call parameter
-    
+ConnectDB();
 
-    console.log("Application i9s running in POrt",PORT);
-})
+app.listen(PORT, () => {
+  console.log("Application is running in PORT", PORT);
+});
