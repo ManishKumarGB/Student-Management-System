@@ -6,7 +6,7 @@ const Table = () => {
         
     <div className='Table'>
         <h1>Students Table</h1>
-        <table className='line'>
+        <table className='Table'>
             <thead>
                 <tr>
                     <th>Name</th>
