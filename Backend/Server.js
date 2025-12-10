@@ -37,6 +37,52 @@ app.get('/api/students', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+// PUT route to update a student by ID
+app.put('/api/student/:id', async (req, res) => {
+    try {
+        const studentId = req.params.id;
+        const updates = req.body;
+        
+        // Mongoose method to find and update the document
+        const updatedStudent = await Student.findByIdAndUpdate(
+            studentId, 
+            updates, 
+            { new: true, runValidators: true } // 'new: true' returns the updated document
+        );
+
+        if (!updatedStudent) {
+            return res.status(404).json({ message: 'Student not found' });
+        }
+
+        res.status(200).json(updatedStudent);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
+// DELETE route to delete a student by ID
+app.delete('/api/student/:id', async (req, res) => {
+    try {
+        const studentId = req.params.id;
+
+        // Mongoose method to find and delete the document
+        const deletedStudent = await Student.findByIdAndDelete(studentId);
+
+        if (!deletedStudent) {
+            return res.status(404).json({ message: 'Student not found' });
+        }
+        
+        // 204 No Content is a standard success status for DELETE
+        res.status(204).json({
+             success: true,
+            message: "successfully created student",
+            
+        }); 
+        
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 
 app.listen(PORT, () => {
