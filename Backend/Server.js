@@ -32,7 +32,11 @@ app.get('/api/students', async (req, res) => {
     try {
         // Use the find() method without any arguments to get all documents
         const students = await Student.find();
-        res.status(200).json(students); // Send the list of students as JSON
+        res.status(200).json({
+             success: true,
+            message: "successfully Fetched all student",
+            students:students
+        } ); // Send the list of students as JSON
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

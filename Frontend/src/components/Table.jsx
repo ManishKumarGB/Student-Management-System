@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {getAllStudent} from "../services/api";
+import { useEffect} from 'react';
 
 const Table = () => {
+    const[Students,setStudents] =useState([]);
+
+    async function usefetchstudents() {
+        try{
+            const Students =await getAllStudent();
+            setStudents(Students);
+
+            console.log("Students:",Student)
+        }
+        catch(error){
+
+        }
+        
+    }
+
+    useEffect(() =>{
+       usefetchstudents();
+    },[]);
+
   return (
-    <>
+   <>
         
     <div className='Table'>
         <h1>Students Table</h1>
@@ -15,52 +36,12 @@ const Table = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Manish</td>
-                    <td>24</td>
-                    <td>
-                        <div>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </div>
-                    </td>
+               { Students.map((Student)=>(      
+               <tr key={Student._id}>
+                    <td>{Student.name}</td>
+                    <td>{Student.age}</td>
                 </tr>
-                <tr>
-                    <td>Arvind</td>
-                    <td>25</td>
-                    <td><div>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Shashank</td>
-                    <td>23</td>
-                    <td><div>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Darshan</td>
-                    <td>25</td>
-                    <td><div>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Manyashree</td>
-                    <td>23</td>
-                    <td><div>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </div>
-                        </td>
-                </tr>
+               ))}
             </tbody>
                  </table>
                  <div></div>
@@ -72,9 +53,11 @@ const Table = () => {
 
 
 
+
     
     </>
   )
+  
 }
 
 export default Table
