@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import {getAllStudent} from "../services/api";
 import { useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Table = () => {
+    const navigate = useNavigate();
     const[Students,setStudents] =useState([]);
 
     async function usefetchstudents() {
@@ -27,6 +29,9 @@ const Table = () => {
         
     <div className='Table'>
         <h1>Students Table</h1>
+        <div className='button'>
+            <button onClick={() =>navigate("/create-student")}>Create Students</button>
+        </div>
         <table className='Table'>
             <thead>
                 <tr>

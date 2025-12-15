@@ -26,3 +26,13 @@ const studentsArray =response.data.students
     }
 }
 
+export const addStudent =async({name,age}) =>{
+    try{
+        const response =await API.post("/student",{name,age});
+        return response.data.message;
+
+    }
+    catch(error){
+        console.log("Error creating Students",error)
+    }
+}
